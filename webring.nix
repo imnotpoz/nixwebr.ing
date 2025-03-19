@@ -22,4 +22,5 @@
     { name = "mimvoid"; site = "https://mimvoid.neocities.org"; config = "https://github.com/mimvoid/nix-config"; }
     { name = "bricked"; site = "https://bricked.dev"; config = "https://nixdots.bricked.dev"; }
     { name = "edvardsire"; site = "https://edvardsire.com/"; config = "https://github.com/edvardsire/nixconfig"; }
+    { name = "lovis"; site = "https://lovirent.eu/"; config = "https://gitlab.olaf.one/pacman/nixos"; }
 ]
