@@ -8,7 +8,9 @@
   
   src = ./.;
 
-  cargoHash = "sha256-Yx86reMsrs1xx3jWAg4j0vLZc9N4+CJgCgFLTUPpfwo=";
+  cargoLock = {
+    lockFile = ./Cargo.lock;
+  };
 
   meta = {
     description = "Backend for the nix webring";
