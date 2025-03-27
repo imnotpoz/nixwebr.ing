@@ -24,4 +24,5 @@
     { name = "edvardsire"; site = "https://edvardsire.com/"; config = "https://github.com/edvardsire/nixconfig"; }
     { name = "lovis"; site = "https://lovirent.eu/"; config = "https://gitlab.olaf.one/pacman/nixos"; }
     { name = "calmbookish"; site = "https://cb.klaaan.ru"; config = "https://github.com/calmbookish/nixconfig"; }
+    { name = "spoody"; site = "https://spoodythe.one/"; config = "https://git.spoodythe.one/spoody/nixos-configuration"; }
 ]
