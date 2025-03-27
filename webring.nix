@@ -13,7 +13,7 @@
     { name = "mat"; site = "https://allpurposem.at"; config = "https://git.allpurposem.at/mat/Computer"; }
     { name = "bwkam"; site = "https://bwkam.github.io"; config = "https://github.com/bwkam/dots"; }
     { name = "MarkAssPandi"; site = "https://markasspandi.nl"; config = "https://codeberg.org/MicroPanda123/nixosos"; }
-    { name = "satr14"; site = "https://satr14.my.id"; config = "https://github.com/SX-9/nix-conf"; }
+    { name = "satr14"; site = "https://satr14.my.id/?webring"; config = "https://github.com/SX-9/nix-conf"; }
     { name = "adxthya"; site = "https://adxthya.github.io/"; config = "https://github.com/adxthya/nix-dotfiles"; }
     { name = "justdeeevin"; site = "https://justdeeevin.dev"; config = "https://github.com/justdeeevin/nix-config"; }
     { name = "theholytachanka"; site = "https://theholytachanka.com"; config = "https://github.com/ilovethensa/homelab"; }
