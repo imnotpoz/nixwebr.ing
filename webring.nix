@@ -26,4 +26,5 @@
     { name = "calmbookish"; site = "https://cb.klaaan.ru"; config = "https://github.com/calmbookish/nixconfig"; }
     { name = "spoody"; site = "https://spoodythe.one/"; config = "https://git.spoodythe.one/spoody/nixos-configuration"; }
     { name = "eXia"; site = "https://mewoocat.github.io"; config = "https://github.com/mewoocat/NixOS"; }
+    { name = "damiii"; site = "https://damiii.dev"; }
 ]
