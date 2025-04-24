@@ -52,9 +52,9 @@ in {
         ${h2 "about"}
         <p>
           this is a webring for people passionate about <a href="https://nix.dev/">nix</a>/<a href="https://nixos.org/">os</a>
-          <br>
+          <br><br>
           it also allows you to link your nix configs, acting as a sort of repository for them
-          <br>
+          <br><br>
           there are currently ${toString (length webringMembers)} members
         </p>
 
