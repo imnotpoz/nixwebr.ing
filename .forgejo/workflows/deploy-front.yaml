@@ -8,6 +8,7 @@ on:
       - 'site/**'
       - '.forgejo/workflows/deploy-front.yaml'
       - 'webring.nix'
+      - 'flake.*'
 
 jobs:
   deploy:
