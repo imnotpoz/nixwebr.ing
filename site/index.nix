@@ -72,10 +72,12 @@ in {
         </ul>
         <p>
           and make a PR to one of <a href="https://codeberg.org/poz/nixwebr.ing">the</a> <a href="https://github.com/jacekpoz/nixwebr.ing">repos</a> adding yourself to the <code>webring.nix</code> file:
-          <br>
+          <br><br>
           <code>{ name = "name"; site = "https://mysite.tld"; config = "https://gitforge.tld/name/nixos"; }</code>
-          <br>
+          <br><br>
           linking your nixos config is entirely optional! (you'll be way cooler though)
+          <br><br>
+          if you don't want to link your config, omit the <code>config</code> attribute entirely
         </p>
 
         ${h2 "does it work?"}
