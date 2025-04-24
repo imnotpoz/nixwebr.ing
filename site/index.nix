@@ -7,8 +7,8 @@
   inherit (pkgs) lib;
 
   inherit (lib.attrsets) hasAttr;
-  inherit (lib.lists) map;
-  inherit (lib.strings) concatStrings optionalString;
+  inherit (lib.lists) length map;
+  inherit (lib.strings) concatStrings optionalString toString;
 in {
   template = "passthrough";
   format = "html";
@@ -51,6 +51,10 @@ in {
         ${h2 "about"}
         <p>
           this is a webring for people passionate about <a href="https://nix.dev/">nix</a>/<a href="https://nixos.org/">os</a>
+          <br>
+          it also allows you to link your nix configs, acting as a sort of repository for them
+          <br>
+          there are currently ${toString (length webringMembers)} members
         </p>
 
         ${h2 "joining"}
