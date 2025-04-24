@@ -14,6 +14,7 @@
     forEachSystem = nixpkgs.lib.genAttrs (import systems);
     pkgsForEach = nixpkgs.legacyPackages;
 
+    name = "nixwebr.ing";
     webringMembers = import ./webring.nix;
   in {
     packages = forEachSystem (
@@ -31,7 +32,7 @@
       system: let
         pkgs = pkgsForEach.${system};
         shell = pkgs.mkShell {
-          name = "nixwebr.ing";
+          inherit name;
 
           packages = with pkgs; [
             darkhttpd
@@ -40,7 +41,7 @@
           inputsFrom = [ self.packages.${system}.server ];
         };
       in {
-        "nixwebr.ing" = shell;
+        ${name} = shell;
         default = shell;
       }
     );
