@@ -6,9 +6,10 @@
 }: let
   inherit (pkgs) lib;
 
+  inherit (builtins) toString;
   inherit (lib.attrsets) hasAttr;
   inherit (lib.lists) length map;
-  inherit (lib.strings) concatStrings optionalString toString;
+  inherit (lib.strings) concatStrings optionalString;
 in {
   template = "passthrough";
   format = "html";
