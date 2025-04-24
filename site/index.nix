@@ -57,7 +57,7 @@ in {
           <br><br>
           it also allows you to link your nix configs, acting as a sort of repository for them
           <br><br>
-          there are currently ${toString (length webringMembers)} members, ${toString (length configMembers)} link their configs!
+          there are currently ${toString (length webringMembers)} members, ${toString (length configMembers)} of which link their configs!
         </p>
 
         ${h2 "joining"}
