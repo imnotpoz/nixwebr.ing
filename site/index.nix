@@ -8,8 +8,10 @@
 
   inherit (builtins) toString;
   inherit (lib.attrsets) hasAttr;
-  inherit (lib.lists) length map;
+  inherit (lib.lists) filter length map;
   inherit (lib.strings) concatStrings optionalString;
+
+  configMembers = filter (hasAttr "config") webringMembers;
 in {
   template = "passthrough";
   format = "html";
@@ -55,7 +57,7 @@ in {
           <br><br>
           it also allows you to link your nix configs, acting as a sort of repository for them
           <br><br>
-          there are currently ${toString (length webringMembers)} members
+          there are currently ${toString (length webringMembers)} members, ${toString (length configMembers)} link their configs!
         </p>
 
         ${h2 "joining"}
