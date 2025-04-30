@@ -27,4 +27,5 @@
     { name = "spoody"; site = "https://spoodythe.one/"; config = "https://git.spoodythe.one/spoody/nixos-configuration"; }
     { name = "eXia"; site = "https://mewoocat.github.io"; config = "https://github.com/mewoocat/NixOS"; }
     { name = "damiii"; site = "https://damiii.dev"; }
+    { name = "nydragon"; site = "https://nydragon.eu"; }
 ]
