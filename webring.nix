@@ -16,7 +16,6 @@
     { name = "satr14"; site = "https://satr14.my.id/?webring"; config = "https://github.com/SX-9/nix-conf"; }
     { name = "adxthya"; site = "https://adxthya.github.io/"; config = "https://github.com/adxthya/nix-dotfiles"; }
     { name = "justdeeevin"; site = "https://justdeeevin.dev"; config = "https://github.com/justdeeevin/nix-config"; }
-    { name = "theholytachanka"; site = "https://theholytachanka.com"; config = "https://github.com/ilovethensa/homelab"; }
     { name = "sioodmy"; site = "https://sioodmy.dev"; config = "https://github.com/sioodmy/dotfiles"; }
     { name = "maydayv7"; site = "https://maydayv7.site"; config = "https://github.com/maydayv7/dotfiles"; }
     { name = "mimvoid"; site = "https://mimvoid.neocities.org"; config = "https://github.com/mimvoid/nix-config"; }
@@ -24,7 +23,6 @@
     { name = "edvardsire"; site = "https://edvardsire.com/"; config = "https://github.com/edvardsire/nixconfig"; }
     { name = "lovis"; site = "https://lovirent.eu/"; config = "https://gitlab.olaf.one/pacman/nixos"; }
     { name = "calmbookish"; site = "https://cb.klaaan.ru"; config = "https://github.com/calmbookish/nixconfig"; }
-    { name = "spoody"; site = "https://spoodythe.one/"; config = "https://git.spoodythe.one/spoody/nixos-configuration"; }
     { name = "eXia"; site = "https://mewoocat.github.io"; config = "https://github.com/mewoocat/NixOS"; }
     { name = "damiii"; site = "https://damiii.dev"; }
     { name = "nydragon"; site = "https://nydragon.eu"; }

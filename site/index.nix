@@ -51,6 +51,17 @@ in {
           '') webringMembers)}
         </ul>
 
+        ${h2 "updates"}
+        <p>
+          2025-05-07
+          <br>
+          removed <code>spoody</code> due to the website being broken
+          <br>
+          and <code>theholytachanka</code> due to missing webring links
+          <br>
+          contact me after fixing your issues or make a PR to get back in
+        </p>
+
         ${h2 "about"}
         <p>
           this is a webring for people passionate about <a href="https://nix.dev/">nix</a>/<a href="https://nixos.org/">os</a>
