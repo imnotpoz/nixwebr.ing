@@ -26,4 +26,5 @@
     { name = "eXia"; site = "https://mewoocat.github.io"; config = "https://github.com/mewoocat/NixOS"; }
     { name = "damiii"; site = "https://damiii.dev"; }
     { name = "nydragon"; site = "https://nydragon.eu"; }
+    { name = "ersei"; site = "https://ersei.net"; config = "https://git.ersei.net/nix-configs.git"; }
 ]
