@@ -7,7 +7,6 @@
     { name = "orangc"; site = "https://orangc.net"; config = "https://github.com/orangci/dots"; }
     { name = "ajaxbits"; site = "https://ajaxbits.com"; config = "https://github.com/ajaxbits/config"; }
     { name = "jappie"; site = "https://jappie.dev"; config = "https://app.radicle.xyz/nodes/git.jappie.dev/rad:z4HEZGDPknT12W4fuXc6wM3HtYTf2"; }
-    { name = "vizqq"; site = "https://vizqq.cc"; config = "https://github.com/ViZiD/dotfiles"; }
     { name = "korolr"; site = "https://korolr.dev"; config = "https://github.com/korolr/nixos-config"; }
     { name = "emo-mruczek"; site = "https://emo-mruczek.pl"; config = "https://github.com/emo-mruczek/niksos-confg"; }
     { name = "mat"; site = "https://allpurposem.at"; config = "https://git.allpurposem.at/mat/Computer"; }
