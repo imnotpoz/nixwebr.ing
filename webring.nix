@@ -21,7 +21,7 @@
     { name = "bricked"; site = "https://bricked.dev"; config = "https://nixdots.bricked.dev"; }
     { name = "edvardsire"; site = "https://edvardsire.com/"; config = "https://github.com/edvardsire/nixconfig"; }
     { name = "lovis"; site = "https://lovirent.eu/"; config = "https://gitlab.olaf.one/pacman/nixos"; }
-    { name = "calmbookish"; site = "https://cb.klaaan.ru"; config = "https://github.com/calmbookish/nixconfig"; }
+    { name = "calmbookish"; site = "https://calmbookish.su"; config = "https://github.com/calmbookish/nixconfig"; }
     { name = "eXia"; site = "https://mewoocat.github.io"; config = "https://github.com/mewoocat/NixOS"; }
     { name = "damiii"; site = "https://damiii.dev"; }
     { name = "nydragon"; site = "https://nydragon.eu"; }
