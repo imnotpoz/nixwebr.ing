@@ -16,4 +16,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-          nix build -L .#site -o /srv/web/nixwebr.ing
+          nix build -L .#site --option substituters 'https://cache.nixos.org' -o /srv/web/nixwebr.ing
