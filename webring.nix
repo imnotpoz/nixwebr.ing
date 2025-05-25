@@ -26,4 +26,5 @@
     { name = "damiii"; site = "https://damiii.dev"; }
     { name = "nydragon"; site = "https://nydragon.eu"; }
     { name = "ersei"; site = "https://ersei.net"; config = "https://git.ersei.net/nix-configs.git"; }
+    { name = "mochienya"; site = "https://puppy.f53.dev"; config = "https://github.com/mochienya/nixConfig"; }
 ]
