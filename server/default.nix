@@ -17,7 +17,7 @@
     homepage = "https://nixwebr.ing";
     license = lib.licenses.agpl3Plus;
     platforms = lib.platforms.linux;
-    maintainers = [ lib.maintainers.jacekpoz ];
+    maintainers = [ lib.maintainers.poz ];
     mainProgram = "nixwebring-server";
   };
 }
