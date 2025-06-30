@@ -28,4 +28,5 @@
     { name = "ersei"; site = "https://ersei.net"; config = "https://git.ersei.net/nix-configs.git"; }
     { name = "mochienya"; site = "https://puppy.f53.dev"; config = "https://github.com/mochienya/nixConfig"; }
     { name = "leana8959"; site = "https://confusedcompiler.org"; config = "https://codeberg.org/leana8959/.files"; }
+    { name = "cybardev"; site = "https://cybar.dev"; config = "https://github.com/cybardev/nix-dotfiles"; }
 ]
