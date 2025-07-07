@@ -15,7 +15,7 @@
     { name = "satr14"; site = "https://satr14.my.id/?webring"; config = "https://github.com/SX-9/nix-conf"; }
     { name = "adxthya"; site = "https://adxthya.github.io/"; config = "https://github.com/adxthya/nix-dotfiles"; }
     { name = "justdeeevin"; site = "https://justdeeevin.dev"; config = "https://github.com/justdeeevin/nix-config"; }
-    { name = "sioodmy"; site = "https://sioodmy.dev"; config = "https://github.com/sioodmy/dotfiles"; }
+    { name = "sioodmy"; site = "https://siood.my"; config = "https://github.com/sioodmy/dotfiles"; }
     { name = "maydayv7"; site = "https://maydayv7.site"; config = "https://github.com/maydayv7/dotfiles"; }
     { name = "mimvoid"; site = "https://mimvoid.neocities.org"; config = "https://github.com/mimvoid/nix-config"; }
     { name = "bricked"; site = "https://bricked.dev"; config = "https://nixdots.bricked.dev"; }
