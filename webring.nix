@@ -30,4 +30,5 @@
     { name = "leana8959"; site = "https://confusedcompiler.org"; config = "https://codeberg.org/leana8959/.files"; }
     { name = "cybardev"; site = "https://cybar.dev"; config = "https://github.com/cybardev/nix-dotfiles"; }
     { name = "stef"; site = "https://stefdp.com"; config = "https://github.com/Stef-00012/dots"; }
+    { name = "aubun"; site = "https://nixfox.ca/"; config = "https://git.nixfox.ca/Bun/nixos-config"; }
 ]
