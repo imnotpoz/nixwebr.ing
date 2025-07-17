@@ -11,7 +11,7 @@
     { name = "emo-mruczek"; site = "https://emo-mruczek.pl"; config = "https://github.com/emo-mruczek/niksos-confg"; }
     { name = "mat"; site = "https://allpurposem.at"; config = "https://git.allpurposem.at/mat/Computer"; }
     { name = "bwkam"; site = "https://bwkam.github.io"; config = "https://github.com/bwkam/dots"; }
-    { name = "MarkAssPandi"; site = "https://markasspandi.nl"; config = "https://codeberg.org/MicroPanda123/nixosos"; }
+    { name = "MarkAssPandi"; site = "https://kamila.pet"; config = "https://codeberg.org/MicroPanda123/nixosos"; }
     { name = "satr14"; site = "https://satr14.my.id/?webring"; config = "https://github.com/SX-9/nix-conf"; }
     { name = "adxthya"; site = "https://adxthya.github.io/"; config = "https://github.com/adxthya/nix-dotfiles"; }
     { name = "justdeeevin"; site = "https://justdeeevin.dev"; config = "https://github.com/justdeeevin/nix-config"; }
