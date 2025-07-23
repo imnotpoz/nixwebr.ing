@@ -11,7 +11,7 @@
     crane.url = "github:ipetkov/crane";
   };
 
-  outputs = { nixpkgs, nte, self, systems, crane, ... }: let
+  outputs = { self, nixpkgs, systems, nte, crane, ... }: let
     forEachSystem = nixpkgs.lib.genAttrs (import systems);
     pkgsForEach = nixpkgs.legacyPackages;
 
