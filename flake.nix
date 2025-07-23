@@ -8,9 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     systems.url = "github:nix-systems/default";
+    crane.url = "github:ipetkov/crane";
   };
 
-  outputs = { nixpkgs, nte, self, systems, ... }: let
+  outputs = { nixpkgs, nte, self, systems, crane, ... }: let
     forEachSystem = nixpkgs.lib.genAttrs (import systems);
     pkgsForEach = nixpkgs.legacyPackages;
 
@@ -20,12 +21,13 @@
     packages = forEachSystem (
       system: let
         pkgs = pkgsForEach.${system};
+        craneLib = crane.mkLib pkgs;
       in {
         site = pkgs.callPackage ./site/default.nix {
           inherit (nte.functions.${system}) mkNteDerivation;
           inherit webringMembers;
         };
-        server = pkgs.callPackage ./server/default.nix { };
+        server = pkgs.callPackage ./server/default.nix { inherit craneLib; };
       }
     );
     devShells = forEachSystem (

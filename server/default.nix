@@ -1,15 +1,16 @@
 {
   lib,
-  rustPlatform,
+  craneLib,
   ...
-}: rustPlatform.buildRustPackage {
+}: let
   pname = "nixwebring-server";
+in craneLib.buildPackage {
+  inherit pname;
   version = "0.1.0";
   
-  src = ./.;
-
-  cargoLock = {
-    lockFile = ./Cargo.lock;
+  src = builtins.path {
+    path = ./.;
+    name = "${pname}-source";
   };
 
   meta = {
