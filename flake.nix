@@ -23,11 +23,11 @@
         pkgs = pkgsForEach.${system};
         craneLib = crane.mkLib pkgs;
       in {
-        site = pkgs.callPackage ./site/default.nix {
+        site = pkgs.callPackage ./site/package.nix {
           inherit (nte.functions.${system}) mkNteDerivation;
           inherit webringMembers;
         };
-        server = pkgs.callPackage ./server/default.nix { inherit craneLib; };
+        server = pkgs.callPackage ./server/package.nix { inherit craneLib; };
       }
     );
     devShells = forEachSystem (
