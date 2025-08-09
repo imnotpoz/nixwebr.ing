@@ -29,6 +29,7 @@
     { name = "mochienya"; site = "https://puppy.f53.dev"; config = "https://github.com/mochienya/nixConfig"; }
     { name = "leana8959"; site = "https://confusedcompiler.org"; config = "https://codeberg.org/leana8959/.files"; }
     { name = "cybardev"; site = "https://cybar.dev"; config = "https://github.com/cybardev/nix-dotfiles"; }
+    { name = "santoshxshrestha"; site = "https://santoshxshrestha.github.io/"; config = "https://github.com/santoshxshrestha/nixos"; }
     { name = "stef"; site = "https://stefdp.com"; config = "https://github.com/Stef-00012/dots"; }
     { name = "aubun"; site = "https://nixfox.ca/"; config = "https://git.nixfox.ca/Bun/nixos-config"; }
     { name = "zackerthescar"; site = "https://zackerthescar.com"; config = "https://github.com/zackerthescar/nix-config"; }
