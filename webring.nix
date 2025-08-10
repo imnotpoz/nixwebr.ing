@@ -32,4 +32,5 @@
     { name = "stef"; site = "https://stefdp.com"; config = "https://github.com/Stef-00012/dots"; }
     { name = "aubun"; site = "https://nixfox.ca/"; config = "https://git.nixfox.ca/Bun/nixos-config"; }
     { name = "zackerthescar"; site = "https://zackerthescar.com"; config = "https://github.com/zackerthescar/nix-config"; }
+    { name = "santoshxshrestha"; site = "https://santoshxshrestha.github.io/"; config = "https://github.com/santoshxshrestha/nixos"; }
 ]
