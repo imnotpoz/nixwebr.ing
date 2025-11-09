@@ -35,4 +35,5 @@
     { name = "santoshxshrestha"; site = "https://santoshxshrestha.github.io/"; config = "https://github.com/santoshxshrestha/nixos"; }
     { name = "hyperpastel"; site = "https://hyperpas.tel/"; config = "https://github.com/hyperpastel/system"; }
     { name = "liv.town"; site = "https://liv.town"; config = "https://code.liv.town/liv/nixos-config"; }
+    { name = "adamperkowski"; site = "https://adamperkowski.dev"; config = "https://github.com/adamperkowski/dotfiles"; }
 ]
