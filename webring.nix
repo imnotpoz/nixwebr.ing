@@ -37,4 +37,5 @@
     { name = "liv.town"; site = "https://liv.town"; config = "https://code.liv.town/liv/nixos-config"; }
     { name = "adamperkowski"; site = "https://adamperkowski.dev"; config = "https://github.com/adamperkowski/dotfiles"; }
     { name = "cashmere"; site = "https://cashmere.rs"; }
+    { name = "Ametic"; site = "https://ametic.ovh"; config = "https://github.com/Ametic/dotfiles"; }
 ]
