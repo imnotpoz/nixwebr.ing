@@ -27,7 +27,7 @@ async fn next(
     }
 
     Response::TemporaryRedirect()
-        .header(header::LOCATION, "https://nixwebr.ing/")
+        .header(header::LOCATION, "https://nixwebr.ing/invalid-member.html")
         .header(header::CACHE_CONTROL, "no-store")
         .take()
 }
@@ -48,7 +48,7 @@ async fn prev(
     }
 
     Response::TemporaryRedirect()
-        .header(header::LOCATION, "https://nixwebr.ing/")
+        .header(header::LOCATION, "https://nixwebr.ing/invalid-member.html")
         .header(header::CACHE_CONTROL, "no-store")
         .take()
 }
