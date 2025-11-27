@@ -41,6 +41,7 @@
 
           packages = with pkgs; [
             darkhttpd
+            clippy
           ];
 
           inputsFrom = [ self.packages.${system}.server ];
