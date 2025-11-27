@@ -53,7 +53,7 @@ in {
           in /*html*/''
             <li>
               <div class="webring-member">
-                <span id="website-status-${i}"></span>
+                <span id="website-status-${toString i}"></span>
                 <a href="${member.site}">${member.name}</a>
                 ${optionalString hasConfig /*html*/''
                   <a href="${member.config}"><img class="config-image" src="/nix.svg" alt="their nixos config"></a>
