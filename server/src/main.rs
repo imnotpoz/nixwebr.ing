@@ -202,6 +202,7 @@ async fn main() -> std::io::Result<()> {
                     .service(next)
                     .service(prev)
                     .service(rand)
+                    .service(status)
                     .service(
                         nfs::Files::new("/", nix_webring_dir.clone())
                             .index_file("index.html")
