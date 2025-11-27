@@ -100,8 +100,8 @@ async fn website_checker(members: Arc<Mutex<Vec<WebringMember>>>) {
                 Ok(resp) => {
                     match resp.text().await {
                         Ok(text) => {
-                            let links_present = text.contains(&format!("https://nixwebr.ing/prev/{}", member.name))
-                                && text.contains(&format!("https://nixwebr.ing/next/{}", member.name));
+                            let links_present = text.contains(&format!("nixwebr.ing/prev/{}", member.name))
+                                && text.contains(&format!("nixwebr.ing/next/{}", member.name));
 
                             if links_present {
                                 WebsiteStatus::Ok
