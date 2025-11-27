@@ -81,10 +81,10 @@ async fn main() -> std::io::Result<()> {
     web::server(move || {
         let path = format!("{nix_webring_dir}/webring.json");
         let json = fs::read_to_string(&path)
-            .expect(&format!("couldn't open {path}"));
+            .unwrap_or_else(|_| panic!("couldn't open {path}"));
 
         let members: Vec<WebringMember> = normalize(Parser::new(json.chars()).parse().unwrap())
-            .expect(&format!("failed deserializing webring members: {json}"));
+            .unwrap_or_else(|_| panic!("failed deserializing webring members: {json}"));
 
         web::App::new()
             .wrap(middleware::Logger::default())
