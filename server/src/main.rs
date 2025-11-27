@@ -15,7 +15,7 @@ enum WebsiteStatus {
     Unknown,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 struct WebringMember {
     name: String,
     site: String,
