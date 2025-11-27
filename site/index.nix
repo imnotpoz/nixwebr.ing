@@ -41,7 +41,7 @@ in {
           <br><br>
           hover over the status character to see the last checked time (UTC+1)
           <br><br>
-          the status characters are:
+          status characters:
           <span style="color: #019739;">+</span> - ok,
           <span style="color: #F8AD0D;">/</span> - broken links,
           <span style="color: #B80000;">x</span> - unreachable,
