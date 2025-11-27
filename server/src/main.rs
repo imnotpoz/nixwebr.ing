@@ -1,4 +1,4 @@
-use std::{fs::{self}, sync::Arc, thread, time::Duration};
+use std::{fs::{self}, sync::Arc, time::Duration};
 
 use chrono::{DateTime, Local};
 use ntex::{http::{header, Response}, web::{self, middleware}};
@@ -125,7 +125,7 @@ async fn website_checker(members: Arc<Mutex<Vec<WebringMember>>>) {
 
         let end = Local::now();
         let elapsed = end.naive_local() - start.naive_local();
-        thread::sleep(day - elapsed.to_std().expect("this should never be negative"));
+        tokio::time::sleep(day - elapsed.to_std().expect("this should never be negative")).await;
     }
 }
 
