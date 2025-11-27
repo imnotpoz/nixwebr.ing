@@ -78,6 +78,10 @@ li:not(:last-child) {
     align-items: center;
 }
 
+.webring-status {
+    margin-right: 0.5em;
+}
+
 .webring-member > a {
     display: grid;
 }
