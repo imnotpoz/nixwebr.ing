@@ -39,7 +39,7 @@ in {
         <p>
           all websites are automatically checked every 24 hours
           <br><br>
-          hover over the status character to check the last checked time (UTC+1)
+          hover over the status character to see the last checked time (UTC+1)
           <br><br>
           the status characters are:
           <span style="color: #019739;">+</span> - ok,
