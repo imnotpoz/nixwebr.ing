@@ -1,8 +1,6 @@
 {
   lib,
   craneLib,
-  pkg-config,
-  openssl,
   ...
 }: let
   pname = "nixwebring-server";
@@ -14,14 +12,6 @@ in craneLib.buildPackage {
     path = ./.;
     name = "${pname}-source";
   };
-
-  nativeBuildInputs = [
-    pkg-config
-  ];
-
-  buildInputs = [
-    openssl
-  ];
 
   meta = {
     description = "Backend for the nix webring";
