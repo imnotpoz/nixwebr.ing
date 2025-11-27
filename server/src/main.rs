@@ -2,7 +2,7 @@ use std::fs::{self};
 
 use ntex::{http::{header, Response}, web::{self, middleware}};
 use ntex_files as nfs;
-use ::rand::{thread_rng, Rng};
+use ::rand::{rng, Rng};
 use zasa::{parser::Parser, value::normalize, Normalize};
 
 #[derive(Clone, Normalize)]
@@ -57,7 +57,7 @@ async fn prev(
 async fn rand(
     members: web::types::State<Vec<WebringMember>>,
 ) -> impl web::Responder {
-    let rand_index = thread_rng().gen_range(0..members.len());
+    let rand_index = rng().random_range(0..members.len());
     let rand_site = &members[rand_index].site;
 
     Response::PermanentRedirect()
