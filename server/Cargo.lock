@@ -1242,9 +1242,9 @@ dependencies = [
 
 [[package]]
 name = "ntex-service"
-version = "3.6.1"
+version = "3.6.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9c6ca5fae136b6e1a7df11aa21cd4b77baf2617f601b823c87276ec9c879da35"
+checksum = "8ce7cca5bb84f6023c88a98d5f36506b913b09f41e8f62bbabfda26b092b1e8f"
 dependencies = [
  "foldhash",
  "log",
