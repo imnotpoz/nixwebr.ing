@@ -93,7 +93,7 @@ in {
 
         ${h2 "does it work?"}
         <p>
-          if you misspell your name in the links or the PR hasn't been merged yet, the next and prev links will lead to <code>https://nixwebr.ing/</code>
+          if you misspell your name in the links or the PR hasn't been merged yet, the next and prev links will lead to <code>https://nixwebr.ing/invalid-member.html</code>
         </p>
 
         ${h2 "support"}

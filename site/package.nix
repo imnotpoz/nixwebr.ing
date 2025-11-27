@@ -30,6 +30,7 @@ in mkNteDerivation {
 
   entries = [
     ./index.nix
+    ./invalid-member.nix
   ];
 
   extraFiles = [
