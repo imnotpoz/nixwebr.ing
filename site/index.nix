@@ -8,8 +8,8 @@
 
   inherit (builtins) toString;
   inherit (lib.attrsets) hasAttr;
-  inherit (lib.lists) filter length map;
-  inherit (lib.strings) concatStrings optionalString;
+  inherit (lib.lists) filter length imap0;
+  inherit (lib.strings) concatStrings optionalString toJSON;
 
   configMembers = filter (hasAttr "config") webringMembers;
 in {
@@ -36,12 +36,24 @@ in {
         </div>
 
         ${h2 "webring members"}
+        <p>
+          all websites are automatically checked every 24 hours
+          <br><br>
+          hover over the status character to check the last checked time (UTC+1)
+          <br><br>
+          the status characters are:
+          <span style="color: #019739;">+</span> - ok,
+          <span style="color: #F8AD0D;">/</span> - broken links,
+          <span style="color: #B80000;">x</span> - unreachable,
+          <span style="color: #575757;">?</span> - unknown
+        </p>
         <ul>
-          ${concatStrings (map (member: let
+          ${concatStrings (imap0 (i: member: let
             hasConfig = hasAttr "config" member;
           in /*html*/''
             <li>
               <div class="webring-member">
+                <span id="website-status-${i}"></span>
                 <a href="${member.site}">${member.name}</a>
                 ${optionalString hasConfig /*html*/''
                   <a href="${member.config}"><img class="config-image" src="/nix.svg" alt="their nixos config"></a>
@@ -50,6 +62,45 @@ in {
             </li>
           '') webringMembers)}
         </ul>
+
+        <script>
+          const members = ${toJSON webringMembers};
+          for (let i = 0; i < members.length; ++i) {
+            const name = members[i].name;
+            fetch("/status/" + name).then(response => {
+              response.text().then(text => {
+                const status = JSON.parse(text);
+                let statusChar = "";
+                let color = "";
+                switch (status.status) {
+                  case "Ok":
+                    statusChar = "+";
+                    color = "#019739";
+                    break;
+                  case "BrokenLinks":
+                    statusChar = "/";
+                    color = "#F8AD0D";
+                    break;
+                  case "Unreachable":
+                    statusChar = "x";
+                    color = "#B80000";
+                    break;
+                  case "Unknown":
+                    statusChar = "?";
+                    color = "#575757";
+                    break;
+                  default:
+                    break;
+                }
+
+                const span = document.getElementById("website-status-" + i);
+                span.textContent = statusChar;
+                span.style.color = color;
+                span.title = status.last_checked;
+              });
+            });
+          }
+        </script>
 
         ${h2 "updates"}
         <p>
