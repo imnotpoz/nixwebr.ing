@@ -4,7 +4,7 @@ use chrono::{DateTime, Local};
 use ntex::{http::{header, Response}, web::{self, middleware}};
 use ntex_files as nfs;
 use ::rand::{rng, Rng};
-use tokio::sync::Mutex;
+use tokio::sync::RwLock;
 use zasa::{parser::Parser, value::{denormalize, normalize}, Normalize};
 
 #[derive(Clone, Debug, PartialEq)]
@@ -25,10 +25,10 @@ struct WebringMember {
 
 #[web::get("/next/{name}")]
 async fn next(
-    members: web::types::State<Arc<Mutex<Vec<WebringMember>>>>,
+    members: web::types::State<Arc<RwLock<Vec<WebringMember>>>>,
     name: web::types::Path<String>,
 ) -> impl web::Responder {
-    let members = members.lock().await;
+    let members = members.read().await;
 
     if let Some((i, _)) = members.iter().enumerate().find(|(_, member)| member.name == *name) {
         let mut m = members.clone();
@@ -61,10 +61,10 @@ async fn next(
 
 #[web::get("/prev/{name}")]
 async fn prev(
-    members: web::types::State<Arc<Mutex<Vec<WebringMember>>>>,
+    members: web::types::State<Arc<RwLock<Vec<WebringMember>>>>,
     name: web::types::Path<String>,
 ) -> impl web::Responder {
-    let members = members.lock().await;
+    let members = members.read().await;
 
     if let Some((i, _)) = members.iter().enumerate().find(|(_, member)| member.name == *name) {
         let mut m = members.clone();
@@ -98,9 +98,9 @@ async fn prev(
 
 #[web::get("/rand")]
 async fn rand(
-    members: web::types::State<Arc<Mutex<Vec<WebringMember>>>>,
+    members: web::types::State<Arc<RwLock<Vec<WebringMember>>>>,
 ) -> impl web::Responder {
-    let members = members.lock().await;
+    let members = members.read().await;
 
     let rand_index = rng().random_range(0..members.len());
     let rand_site = &members[rand_index].site;
@@ -111,13 +111,13 @@ async fn rand(
         .take()
 }
 
-async fn website_checker(members: Arc<Mutex<Vec<WebringMember>>>) {
+async fn website_checker(members: Arc<RwLock<Vec<WebringMember>>>) {
     let day = Duration::from_secs(24 * 60 * 60);
     loop {
         let client = reqwest::Client::new();
         let start = Local::now();
 
-        let mut members = members.lock().await;
+        let mut members = members.write().await;
 
         for member in members.iter_mut() {
             let response = client.get(&member.site)
@@ -158,10 +158,10 @@ async fn website_checker(members: Arc<Mutex<Vec<WebringMember>>>) {
 
 #[web::get("/status/{name}")]
 async fn status(
-    members: web::types::State<Arc<Mutex<Vec<WebringMember>>>>,
+    members: web::types::State<Arc<RwLock<Vec<WebringMember>>>>,
     name: web::types::Path<String>,
 ) -> impl web::Responder {
-    let members = members.lock().await;
+    let members = members.read().await;
 
     if let Some(member) = members.iter().find(|member| member.name == *name) {
         #[derive(Normalize)]
@@ -199,7 +199,7 @@ async fn main() -> std::io::Result<()> {
     let json = fs::read_to_string(&path)
         .unwrap_or_else(|_| panic!("couldn't open {path}"));
 
-    let members = Arc::new(Mutex::new({
+    let members = Arc::new(RwLock::new({
         #[derive(Normalize)]
         struct Member {
             name: String,
