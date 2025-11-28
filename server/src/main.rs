@@ -7,7 +7,7 @@ use ::rand::{rng, Rng};
 use tokio::sync::Mutex;
 use zasa::{parser::Parser, value::{denormalize, normalize}, Normalize};
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq)]
 enum WebsiteStatus {
     Ok,
     BrokenLinks,
@@ -31,8 +31,21 @@ async fn next(
     let members = members.lock().await;
 
     if let Some((i, _)) = members.iter().enumerate().find(|(_, member)| member.name == *name) {
-        let next_index = (i + 1) % members.len();
-        let next_site = &members[next_index].site;
+        let mut m = members.clone();
+        m.rotate_left(i + 1);
+
+        let next_index = m.iter()
+            .enumerate()
+            .find(|(_, WebringMember { ref site_status, .. })|
+                *site_status == WebsiteStatus::Ok
+                || *site_status == WebsiteStatus::BrokenLinks
+            )
+            .map(|(i, _)| i);
+
+        let next_site = match next_index {
+            Some(i) => &m[i].site,
+            None => "https://nixwebr.ing/",
+        };
 
         return Response::PermanentRedirect()
             .header(header::LOCATION, next_site)
@@ -54,8 +67,22 @@ async fn prev(
     let members = members.lock().await;
 
     if let Some((i, _)) = members.iter().enumerate().find(|(_, member)| member.name == *name) {
-        let prev_index = if i == 0 { members.len() - 1 } else { i - 1 };
-        let prev_site = &members[prev_index].site;
+        let mut m = members.clone();
+        m.rotate_left(i);
+        m.reverse();
+
+        let prev_index = m.iter()
+            .enumerate()
+            .find(|(_, WebringMember { ref site_status, .. })|
+                *site_status == WebsiteStatus::Ok
+                || *site_status == WebsiteStatus::BrokenLinks
+            )
+            .map(|(i, _)| i);
+
+        let prev_site = match prev_index {
+            Some(i) => &m[i].site,
+            None => "https://nixwebr.ing/",
+        };
 
         return Response::PermanentRedirect()
             .header(header::LOCATION, prev_site)
