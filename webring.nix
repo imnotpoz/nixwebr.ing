@@ -38,4 +38,5 @@
     { name = "adamperkowski"; site = "https://adamperkowski.dev"; config = "https://github.com/adamperkowski/dotfiles"; }
     { name = "cashmere"; site = "https://cashmere.rs"; }
     { name = "Ametic"; site = "https://ametic.ovh"; config = "https://github.com/Ametic/dotfiles"; }
+    { name = "soliprem"; site = "https://soliprem.eu"; config = "https://github.com/Soliprem/nix-config"; }
 ]
