@@ -7,11 +7,12 @@ use ::rand::{rng, Rng};
 use tokio::sync::RwLock;
 use zasa::{parser::Parser, value::{denormalize, normalize}, Normalize};
 
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug, Default, PartialEq)]
 enum WebsiteStatus {
     Ok,
     BrokenLinks,
     Unreachable,
+    #[default]
     Unknown,
 }
 
