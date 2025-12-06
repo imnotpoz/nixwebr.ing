@@ -32,7 +32,7 @@
     { name = "stef"; site = "https://stefdp.com"; config = "https://github.com/Stef-00012/dots"; }
     { name = "aubun"; site = "https://nixfox.ca/"; config = "https://git.nixfox.ca/Bun/nixos-config"; }
     { name = "zackerthescar"; site = "https://zackerthescar.com"; config = "https://github.com/zackerthescar/nix-config"; }
-    { name = "santoshxshrestha"; site = "https://santoshxshrestha.github.io/"; config = "https://github.com/santoshxshrestha/nixos"; }
+    { name = "santoshxshrestha"; site = "https://santoshxshrestha.tech"; config = "https://github.com/santoshxshrestha/nixos"; }
     { name = "hyperpastel"; site = "https://hyperpas.tel/"; config = "https://github.com/hyperpastel/system"; }
     { name = "liv.town"; site = "https://liv.town"; config = "https://code.liv.town/liv/nixos-config"; }
     { name = "adamperkowski"; site = "https://adamperkowski.dev"; config = "https://github.com/adamperkowski/dotfiles"; }
