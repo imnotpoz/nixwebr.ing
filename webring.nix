@@ -39,4 +39,5 @@
     { name = "cashmere"; site = "https://cashmere.rs"; }
     { name = "Ametic"; site = "https://ametic.ovh"; config = "https://github.com/Ametic/dotfiles"; }
     { name = "soliprem"; site = "https://soliprem.eu"; config = "https://github.com/Soliprem/nix-config"; }
+    { name = "scriptrsherlock"; site = "https://scriptrsherlock.me";
 ]
