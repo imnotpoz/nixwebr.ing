@@ -24,19 +24,22 @@
     packages = forEachSystem (
       system: let
         pkgs = pkgsForEach.${system};
-        craneLib = crane.mkLib pkgs;
       in {
         site = pkgs.callPackage ./site/package.nix {
           inherit (nte.functions.${system}) mkNteDerivation;
           inherit webringMembers;
         };
-        server = pkgs.callPackage ./server/package.nix { inherit craneLib; };
+        server = pkgs.callPackage ./server/package.nix {
+          craneLib = crane.mkLib pkgs;
+        };
       }
     );
     devShells = forEachSystem (
       system: let
         pkgs = pkgsForEach.${system};
-        shell = pkgs.mkShell {
+      in {
+        ${name} = self.devShells.${system}.default;
+        default = pkgs.mkShell {
           inherit name;
 
           packages = with pkgs; [
@@ -46,9 +49,6 @@
 
           inputsFrom = [ self.packages.${system}.server ];
         };
-      in {
-        ${name} = shell;
-        default = shell;
       }
     );
   };
