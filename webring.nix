@@ -16,7 +16,7 @@
     { name = "adxthya"; site = "https://adxthya.github.io/"; config = "https://github.com/adxthya/nix-dotfiles"; }
     { name = "justdeeevin"; site = "https://justdeeevin.dev"; config = "https://github.com/justdeeevin/nix-config"; }
     { name = "sioodmy"; site = "https://siood.my"; config = "https://github.com/sioodmy/dotfiles"; }
-    { name = "maydayv7"; site = "https://maydayv7.site"; config = "https://github.com/maydayv7/dotfiles"; }
+    { name = "maydayv7"; site = "https://maydayv7.cc"; config = "https://github.com/maydayv7/dotfiles"; }
     { name = "mimvoid"; site = "https://mimvoid.neocities.org"; config = "https://github.com/mimvoid/nix-config"; }
     { name = "bricked"; site = "https://bricked.dev"; config = "https://nixdots.bricked.dev"; }
     { name = "edvardsire"; site = "https://edvardsire.com/"; config = "https://github.com/edvardsire/nixconfig"; }
