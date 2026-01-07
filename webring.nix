@@ -35,7 +35,7 @@
     { name = "santoshxshrestha"; site = "https://santoshxshrestha.tech"; config = "https://github.com/santoshxshrestha/nixos"; }
     { name = "hyperpastel"; site = "https://hyperpas.tel/"; config = "https://github.com/hyperpastel/system"; }
     { name = "liv.town"; site = "https://liv.town"; config = "https://code.liv.town/liv/nixos-config"; }
-    { name = "adamperkowski"; site = "https://adamperkowski.dev"; config = "https://github.com/adamperkowski/dotfiles"; }
+    { name = "koi"; site = "https://koi.rip"; config = "https://codeberg.org/koibtw/dotfiles"; }
     { name = "cashmere"; site = "https://cashmere.rs"; }
     { name = "Ametic"; site = "https://ametic.ovh"; config = "https://github.com/Ametic/dotfiles"; }
     { name = "soliprem"; site = "https://soliprem.eu"; config = "https://github.com/Soliprem/nix-config"; }
