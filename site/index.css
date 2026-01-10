@@ -8,12 +8,16 @@ body {
     color: #DDDDDD;
     font-family: monospace;
     font-size: 1.15rem;
+    height: 100%;
+    width: 100%;
+}
+
+main {
     display: flex;
     flex-direction: column;
-    height: 100%;
     max-width: 80ch;
-    padding-bottom: 2em;
-    margin: 1em auto 1em;
+    padding: 2em 0 2em;
+    margin: 0 auto 0;
 }
 
 h2 {
