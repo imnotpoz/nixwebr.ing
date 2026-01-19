@@ -226,7 +226,7 @@ async fn main() -> std::io::Result<()> {
 
     tokio::spawn(website_checker(Arc::clone(&members)));
 
-    web::server(move || {
+    web::server(async move || {
         web::App::new()
             .wrap(middleware::Logger::default())
             .state(Arc::clone(&members))
