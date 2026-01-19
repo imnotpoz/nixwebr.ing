@@ -44,6 +44,7 @@
 
           packages = with pkgs; [
             darkhttpd
+            rust-analyzer
             clippy
           ];
 
