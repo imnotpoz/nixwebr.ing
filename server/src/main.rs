@@ -128,8 +128,13 @@ async fn website_checker(members: Arc<RwLock<Vec<WebringMember>>>) {
                 Ok(resp) => {
                     match resp.text().await {
                         Ok(text) => {
-                            let links_present = text.contains(&format!("nixwebr.ing/prev/{}", member.name))
-                                && text.contains(&format!("nixwebr.ing/next/{}", member.name));
+                            let prev_link = format!("nixwebr.ing/prev/{}", member.name);
+                            let next_link = format!("nixwebr.ing/next/{}", member.name);
+                            let links_present =
+                                (text.contains(&prev_link)
+                                    || text.contains(&html_escape::encode_safe(&prev_link).to_string()))
+                                && (text.contains(&next_link)
+                                    || text.contains(&html_escape::encode_safe(&next_link).to_string()));
 
                             if links_present {
                                 WebsiteStatus::Ok
