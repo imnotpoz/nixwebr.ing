@@ -145,26 +145,27 @@ async fn website_checker(
                             if links_present(&member.name, &text) {
                                 WebsiteStatus::Ok
                             } else {
-                                // only attempt this if the raw source doesn't have any links
-                                let fantoccini_client = fantoccini::ClientBuilder::rustls()
-                                    .expect("failed creating fantoccini client")
-                                    .connect(&format!("http://localhost:{geckodriver_port}"))
-                                    .await
-                                    .expect("failed connecting to geckodriver");
-
-                                fantoccini_client.goto(&member.site)
-                                    .await
-                                    .unwrap_or_else(|_| panic!("failed connecting to {}'s website with fantoccini", member.name));
-
-                                let site_source = fantoccini_client.source()
-                                    .await
-                                    .unwrap_or_else(|_| panic!("failed fetching {}'s website source", member.name));
-
-                                if links_present(&member.name, &site_source) {
-                                    WebsiteStatus::Ok
-                                } else {
+                                // TODO: fix firefox headless issue on the server
+                                // // only attempt this if the raw source doesn't have any links
+                                // let fantoccini_client = fantoccini::ClientBuilder::rustls()
+                                //     .expect("failed creating fantoccini client")
+                                //     .connect(&format!("http://localhost:{geckodriver_port}"))
+                                //     .await
+                                //     .expect("failed connecting to geckodriver");
+                                //
+                                // fantoccini_client.goto(&member.site)
+                                //     .await
+                                //     .unwrap_or_else(|_| panic!("failed connecting to {}'s website with fantoccini", member.name));
+                                //
+                                // let site_source = fantoccini_client.source()
+                                //     .await
+                                //     .unwrap_or_else(|_| panic!("failed fetching {}'s website source", member.name));
+                                //
+                                // if links_present(&member.name, &site_source) {
+                                //     WebsiteStatus::Ok
+                                // } else {
                                     WebsiteStatus::BrokenLinks
-                                }
+                                // }
                             }
                         },
                         Err(_) => WebsiteStatus::Unknown,
