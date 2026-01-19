@@ -4,13 +4,13 @@
   ...
 }: let
   pname = "nixwebring-server";
-in craneLib.buildPackage {
-  inherit pname;
   version = "0.1.0";
+in craneLib.buildPackage {
+  inherit pname version;
   
   src = builtins.path {
     path = ./.;
-    name = "${pname}-source";
+    name = "${pname}-${version}-source";
   };
 
   meta = {
