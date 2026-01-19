@@ -12,6 +12,5 @@ ntex = { version = "3.0.0-pre.12", features = [ "tokio", "rustls" ] }
 ntex-files = "3.0.0"
 rand = "0.9.2"
 reqwest = { version = "0.13.1", default-features = false, features = [ "rustls" ] }
-serde_json = "1.0.149"
 tokio = "1.48.0"
 zasa = { version = "0.7.0", features = [ "derive" ] }

@@ -4,7 +4,6 @@ use chrono::{DateTime, Local};
 use ntex::{http::{header, Response}, web::{self, middleware}};
 use ntex_files as nfs;
 use ::rand::{rng, Rng};
-use serde_json::json;
 use tokio::sync::RwLock;
 use zasa::{parser::Parser, value::{denormalize, normalize}, Normalize};
 
@@ -149,16 +148,6 @@ async fn website_checker(
                                 // only attempt this if the raw source doesn't have any links
                                 let fantoccini_client = fantoccini::ClientBuilder::rustls()
                                     .expect("failed creating fantoccini client")
-                                    .capabilities(
-                                        json!({
-                                            "moz:firefoxOptions": {
-                                                "args": ["--headless"]
-                                            }
-                                        })
-                                        .as_object()
-                                        .expect("failed converting firefox options to json object")
-                                        .clone()
-                                    )
                                     .connect(&format!("http://localhost:{geckodriver_port}"))
                                     .await
                                     .expect("failed connecting to geckodriver");
