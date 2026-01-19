@@ -4,6 +4,7 @@ use chrono::{DateTime, Local};
 use ntex::{http::{header, Response}, web::{self, middleware}};
 use ntex_files as nfs;
 use ::rand::{rng, Rng};
+use serde_json::json;
 use tokio::sync::RwLock;
 use zasa::{parser::Parser, value::{denormalize, normalize}, Normalize};
 
@@ -112,34 +113,68 @@ async fn rand(
         .take()
 }
 
-async fn website_checker(members: Arc<RwLock<Vec<WebringMember>>>) {
+fn links_present(member_name: &str, website_source: &str) -> bool {
+    let prev_link = format!("nixwebr.ing/prev/{}", member_name);
+    let next_link = format!("nixwebr.ing/next/{}", member_name);
+
+    (website_source.contains(&prev_link)
+        || website_source.contains(&html_escape::encode_safe(&prev_link).to_string()))
+    && (website_source.contains(&next_link)
+        || website_source.contains(&html_escape::encode_safe(&next_link).to_string()))
+}
+
+async fn website_checker(
+    members: Arc<RwLock<Vec<WebringMember>>>,
+    geckodriver_port: u16,
+) {
     let day = Duration::from_secs(24 * 60 * 60);
     loop {
-        let client = reqwest::Client::new();
+        let reqwest_client = reqwest::Client::new();
         let start = Local::now();
 
         let mut members = members.write().await;
 
         for member in members.iter_mut() {
-            let response = client.get(&member.site)
+            let response = reqwest_client.get(&member.site)
                 .send().await;
 
             let site_status = match response {
                 Ok(resp) => {
                     match resp.text().await {
                         Ok(text) => {
-                            let prev_link = format!("nixwebr.ing/prev/{}", member.name);
-                            let next_link = format!("nixwebr.ing/next/{}", member.name);
-                            let links_present =
-                                (text.contains(&prev_link)
-                                    || text.contains(&html_escape::encode_safe(&prev_link).to_string()))
-                                && (text.contains(&next_link)
-                                    || text.contains(&html_escape::encode_safe(&next_link).to_string()));
 
-                            if links_present {
+                            if links_present(&member.name, &text) {
                                 WebsiteStatus::Ok
                             } else {
-                                WebsiteStatus::BrokenLinks
+                                // only attempt this if the raw source doesn't have any links
+                                let fantoccini_client = fantoccini::ClientBuilder::rustls()
+                                    .expect("failed creating fantoccini client")
+                                    .capabilities(
+                                        json!({
+                                            "moz:firefoxOptions": {
+                                                "args": ["--headless"]
+                                            }
+                                        })
+                                        .as_object()
+                                        .expect("failed converting firefox options to json object")
+                                        .clone())
+                                    .connect(&format!("http://localhost:{geckodriver_port}"))
+                                    .await
+                                    .expect("failed connecting to geckodriver");
+
+                                fantoccini_client.goto(&member.site)
+                                    .await
+                                    .unwrap_or_else(|_| panic!("failed connecting to {}'s website with fantoccini", member.name));
+
+                                let site_source = fantoccini_client.source()
+                                    .await
+                                    .unwrap_or_else(|_| panic!("failed fetching {}'s website source", member.name));
+
+                                if links_present(&member.name, &site_source) {
+                                    WebsiteStatus::Ok
+                                } else {
+                                    WebsiteStatus::BrokenLinks
+                                }
                             }
                         },
                         Err(_) => WebsiteStatus::Unknown,
@@ -201,6 +236,11 @@ async fn main() -> std::io::Result<()> {
         .parse::<u16>()
         .expect("NIX_WEBRING_PORT has to be u16");
 
+    let nix_webring_geckodriver_port = std::env::var("NIX_WEBRING_GECKODRIVER_PORT")
+        .expect("NIX_WEBRING_GECKODRIVER_PORT not found")
+        .parse::<u16>()
+        .expect("NIX_WEBRING_GECKODRIVER_PORT has to be u16");
+
     let path = format!("{nix_webring_dir}/webring.json");
     let json = fs::read_to_string(&path)
         .unwrap_or_else(|_| panic!("couldn't open {path}"));
@@ -224,7 +264,7 @@ async fn main() -> std::io::Result<()> {
             .collect::<Vec<_>>()
     }));
 
-    tokio::spawn(website_checker(Arc::clone(&members)));
+    tokio::spawn(website_checker(Arc::clone(&members), nix_webring_geckodriver_port));
 
     web::server(async move || {
         web::App::new()

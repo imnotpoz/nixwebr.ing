@@ -46,6 +46,8 @@
             darkhttpd
             rust-analyzer
             clippy
+            geckodriver
+            firefox-esr
           ];
 
           inputsFrom = [ self.packages.${system}.server ];

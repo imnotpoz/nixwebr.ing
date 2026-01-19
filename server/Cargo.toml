@@ -6,10 +6,12 @@ edition = "2021"
 [dependencies]
 chrono = "0.4.42"
 env_logger = "0.11.8"
+fantoccini = { version = "0.22.0", default-features = false, features = [ "rustls-tls" ] }
 html-escape = "0.2.13"
 ntex = { version = "3.0.0-pre.12", features = [ "tokio", "rustls" ] }
 ntex-files = "3.0.0"
 rand = "0.9.2"
 reqwest = { version = "0.13.1", default-features = false, features = [ "rustls" ] }
+serde_json = "1.0.149"
 tokio = "1.48.0"
 zasa = { version = "0.7.0", features = [ "derive" ] }
