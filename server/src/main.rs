@@ -152,7 +152,7 @@ async fn website_checker(
                                     .capabilities(
                                         json!({
                                             "moz:firefoxOptions": {
-                                                "args": ["--headless"]
+                                                "args": ["-headless"]
                                             }
                                         })
                                         .as_object()
