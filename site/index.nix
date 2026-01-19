@@ -134,7 +134,11 @@ in {
             <li>random site (optional): <code>https://nixwebr.ing/rand</code></li>
           </ul>
           <p>
-            and make a PR to one of <a href="https://codeberg.org/poz/nixwebr.ing">the</a> <a href="https://github.com/imnotpoz/nixwebr.ing">repos</a> adding yourself to the <code>webring.nix</code> file:
+            make sure clicking on each webring link opens that URL in the current browser tab (default behaviour, your site generator might put <code>target="_blank"</code> in the anchor elements - figure out how to remove it)
+            <br><br>
+            this is to ensure convenience when exploring the webring and to not leave behind any clutter in the user's tabs
+            <br><br>
+            when your site has all the required links, make a PR to one of <a href="https://codeberg.org/poz/nixwebr.ing">the</a> <a href="https://github.com/imnotpoz/nixwebr.ing">repos</a> adding yourself to the <code>webring.nix</code> file:
             <br><br>
             <code>{ name = "name"; site = "https://mysite.tld"; config = "https://gitforge.tld/name/nixos"; }</code>
             <br><br>
