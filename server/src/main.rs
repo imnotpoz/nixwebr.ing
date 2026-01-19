@@ -157,7 +157,8 @@ async fn website_checker(
                                         })
                                         .as_object()
                                         .expect("failed converting firefox options to json object")
-                                        .clone())
+                                        .clone()
+                                    )
                                     .connect(&format!("http://localhost:{geckodriver_port}"))
                                     .await
                                     .expect("failed connecting to geckodriver");
