@@ -188,6 +188,7 @@ async fn website_checker(
                         eprintln!("couldn't reach {}'s website! (status unreachable)", member.name);
                         eprintln!("reason: {e}");
                         site_status = WebsiteStatus::Unreachable;
+                        tokio::time::sleep(Duration::from_secs(5)).await;
                         continue;
                     },
                 }
