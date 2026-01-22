@@ -147,6 +147,7 @@ async fn website_checker(
                             Ok(text) => {
 
                                 if links_present(&member.name, &text) {
+                                    println!("found webring links on {}'s website! (status ok)", member.name);
                                     site_status = WebsiteStatus::Ok;
                                     break;
                                 } else {
