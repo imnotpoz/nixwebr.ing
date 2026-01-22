@@ -122,6 +122,8 @@ fn links_present(member_name: &str, website_source: &str) -> bool {
         || website_source.contains(&html_escape::encode_safe(&next_link).to_string()))
 }
 
+const FETCH_TRIES: u8 = 5;
+
 async fn website_checker(
     members: Arc<RwLock<Vec<WebringMember>>>,
     geckodriver_port: u16,
@@ -134,54 +136,62 @@ async fn website_checker(
         let mut members = members.write().await;
 
         for member in members.iter_mut() {
-            let response = reqwest_client.get(&member.site)
-                .send().await;
+            let mut site_status = WebsiteStatus::Unknown;
+            for _ in 0..FETCH_TRIES {
+                let response = reqwest_client.get(&member.site)
+                    .send().await;
 
-            let site_status = match response {
-                Ok(resp) => {
-                    match resp.text().await {
-                        Ok(text) => {
+                match response {
+                    Ok(resp) => {
+                        match resp.text().await {
+                            Ok(text) => {
 
-                            if links_present(&member.name, &text) {
-                                WebsiteStatus::Ok
-                            } else {
-                                // only attempt this if the raw source doesn't have any links
-                                let fantoccini_client = fantoccini::ClientBuilder::rustls()
-                                    .expect("failed creating fantoccini client")
-                                    .connect(&format!("http://localhost:{geckodriver_port}"))
-                                    .await
-                                    .expect("failed connecting to geckodriver");
-
-                                fantoccini_client.goto(&member.site)
-                                    .await
-                                    .unwrap_or_else(|_| panic!("failed connecting to {}'s website with fantoccini", member.name));
-
-                                let site_source = fantoccini_client.source()
-                                    .await
-                                    .unwrap_or_else(|_| panic!("failed fetching {}'s website source", member.name));
-
-                                if links_present(&member.name, &site_source) {
-                                    WebsiteStatus::Ok
+                                if links_present(&member.name, &text) {
+                                    site_status = WebsiteStatus::Ok;
+                                    break;
                                 } else {
-                                    eprintln!("couldn't find webring links on {}'s website! (status broken links)", member.name);
-                                    eprintln!("website source: {site_source}");
-                                    WebsiteStatus::BrokenLinks
+                                    // only attempt this if the raw source doesn't have any links
+                                    let fantoccini_client = fantoccini::ClientBuilder::rustls()
+                                        .expect("failed creating fantoccini client")
+                                        .connect(&format!("http://localhost:{geckodriver_port}"))
+                                        .await
+                                        .expect("failed connecting to geckodriver");
+
+                                    fantoccini_client.goto(&member.site)
+                                        .await
+                                        .unwrap_or_else(|_| panic!("failed connecting to {}'s website with fantoccini", member.name));
+
+                                    let site_source = fantoccini_client.source()
+                                        .await
+                                        .unwrap_or_else(|_| panic!("failed fetching {}'s website source", member.name));
+
+                                    if links_present(&member.name, &site_source) {
+                                        site_status = WebsiteStatus::Ok;
+                                        break;
+                                    } else {
+                                        eprintln!("couldn't find webring links on {}'s website! (status broken links)", member.name);
+                                        eprintln!("website source: {site_source}");
+                                        site_status = WebsiteStatus::BrokenLinks;
+                                        break;
+                                    }
                                 }
-                            }
-                        },
-                        Err(e) => {
-                            eprintln!("couldn't fetch {}'s website source! (status unknown)", member.name);
-                            eprintln!("reason: {e}");
-                            WebsiteStatus::Unknown
-                        },
-                    }
-                },
-                Err(e) => {
-                    eprintln!("couldn't reach {}'s website! (status unreachable)", member.name);
-                    eprintln!("reason: {e}");
-                    WebsiteStatus::Unreachable
-                },
-            };
+                            },
+                            Err(e) => {
+                                eprintln!("couldn't fetch {}'s website source! (status unknown)", member.name);
+                                eprintln!("reason: {e}");
+                                site_status = WebsiteStatus::Unknown;
+                                break;
+                            },
+                        }
+                    },
+                    Err(e) => {
+                        eprintln!("couldn't reach {}'s website! (status unreachable)", member.name);
+                        eprintln!("reason: {e}");
+                        site_status = WebsiteStatus::Unreachable;
+                        continue;
+                    },
+                }
+            }
 
             let last_checked = Local::now();
 
