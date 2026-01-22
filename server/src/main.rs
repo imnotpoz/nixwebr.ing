@@ -160,6 +160,16 @@ async fn website_checker(
                                     .await
                                     .unwrap_or_else(|_| panic!("failed fetching {}'s website source", member.name));
 
+                                println!("=============================================");
+                                println!("=============================================");
+                                println!("=============================================");
+                                println!();
+                                println!("{site_source}");
+                                println!();
+                                println!("=============================================");
+                                println!("=============================================");
+                                println!("=============================================");
+
                                 if links_present(&member.name, &site_source) {
                                     WebsiteStatus::Ok
                                 } else {
