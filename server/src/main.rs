@@ -160,27 +160,27 @@ async fn website_checker(
                                     .await
                                     .unwrap_or_else(|_| panic!("failed fetching {}'s website source", member.name));
 
-                                println!("=============================================");
-                                println!("=============================================");
-                                println!("=============================================");
-                                println!();
-                                println!("{site_source}");
-                                println!();
-                                println!("=============================================");
-                                println!("=============================================");
-                                println!("=============================================");
-
                                 if links_present(&member.name, &site_source) {
                                     WebsiteStatus::Ok
                                 } else {
+                                    eprintln!("couldn't find webring links on {}'s website! (status broken links)", member.name);
+                                    eprintln!("website source: {site_source}");
                                     WebsiteStatus::BrokenLinks
                                 }
                             }
                         },
-                        Err(_) => WebsiteStatus::Unknown,
+                        Err(e) => {
+                            eprintln!("couldn't fetch {}'s website source! (status unknown)", member.name);
+                            eprintln!("reason: {e}");
+                            WebsiteStatus::Unknown
+                        },
                     }
                 },
-                Err(_) => WebsiteStatus::Unreachable,
+                Err(e) => {
+                    eprintln!("couldn't reach {}'s website! (status unreachable)", member.name);
+                    eprintln!("reason: {e}");
+                    WebsiteStatus::Unreachable
+                },
             };
 
             let last_checked = Local::now();
