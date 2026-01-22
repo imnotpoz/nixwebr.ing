@@ -169,11 +169,17 @@ async fn website_checker(
                                     if links_present(&member.name, &site_source) {
                                         println!("found webring links on {}'s website! (status ok)", member.name);
                                         site_status = WebsiteStatus::Ok;
+                                        fantoccini_client.close()
+                                            .await
+                                            .expect("failed closing fantoccini session");
                                         break;
                                     } else {
                                         eprintln!("couldn't find webring links on {}'s website! (status broken links)", member.name);
                                         eprintln!("website source: {site_source}");
                                         site_status = WebsiteStatus::BrokenLinks;
+                                        fantoccini_client.close()
+                                            .await
+                                            .expect("failed closing fantoccini session");
                                         break;
                                     }
                                 }
