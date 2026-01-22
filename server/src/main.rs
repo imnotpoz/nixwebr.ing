@@ -137,6 +137,8 @@ async fn website_checker(
 
         for member in members.iter_mut() {
             let mut site_status = WebsiteStatus::Unknown;
+            let mut fantoccini_client = None;
+
             for _ in 0..FETCH_TRIES {
                 let response = reqwest_client.get(&member.site)
                     .send().await;
@@ -152,11 +154,18 @@ async fn website_checker(
                                     break;
                                 } else {
                                     // only attempt this if the raw source doesn't have any links
-                                    let fantoccini_client = fantoccini::ClientBuilder::rustls()
-                                        .expect("failed creating fantoccini client")
-                                        .connect(&format!("http://localhost:{geckodriver_port}"))
-                                        .await
-                                        .expect("failed connecting to geckodriver");
+                                    if fantoccini_client.is_none() {
+                                        fantoccini_client = Some(
+                                            fantoccini::ClientBuilder::rustls()
+                                                .expect("failed creating fantoccini client")
+                                                .connect(&format!("http://localhost:{geckodriver_port}"))
+                                                .await
+                                                .expect("failed connecting to geckodriver")
+                                        );
+                                    }
+
+                                    let fantoccini_client = fantoccini_client.as_ref()
+                                        .expect("this was literally set to Some one line above");
 
                                     fantoccini_client.goto(&member.site)
                                         .await
@@ -169,17 +178,11 @@ async fn website_checker(
                                     if links_present(&member.name, &site_source) {
                                         println!("found webring links on {}'s website! (status ok)", member.name);
                                         site_status = WebsiteStatus::Ok;
-                                        fantoccini_client.close()
-                                            .await
-                                            .expect("failed closing fantoccini session");
                                         break;
                                     } else {
                                         eprintln!("couldn't find webring links on {}'s website! (status broken links)", member.name);
                                         eprintln!("website source: {site_source}");
                                         site_status = WebsiteStatus::BrokenLinks;
-                                        fantoccini_client.close()
-                                            .await
-                                            .expect("failed closing fantoccini session");
                                         break;
                                     }
                                 }
@@ -200,6 +203,12 @@ async fn website_checker(
                         continue;
                     },
                 }
+            }
+
+            if let Some(client) = fantoccini_client {
+                client.close()
+                    .await
+                    .expect("failed closing fantoccini session");
             }
 
             let last_checked = Local::now();
