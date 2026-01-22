@@ -166,6 +166,7 @@ async fn website_checker(
                                         .unwrap_or_else(|_| panic!("failed fetching {}'s website source", member.name));
 
                                     if links_present(&member.name, &site_source) {
+                                        println!("found webring links on {}'s website! (status ok)", member.name);
                                         site_status = WebsiteStatus::Ok;
                                         break;
                                     } else {
