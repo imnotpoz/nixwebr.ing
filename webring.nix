@@ -42,4 +42,5 @@
     { name = "henrikvtcodes"; site = "https://henrikvt.com"; config = "https://github.com/henrikvtcodes/nix-machines"; }
     { name = "andromeda"; site = "https://mtgmonkey.net"; config = "https://git.mtgmonkey.net/Andromeda/home-manager"; }
     { name = "thegrayarea"; site = "https://the.smallinter.net"; }
+    { name = "boers"; site = "https://boers.email"; config = "https://github.com/martijnboers/nixos"; }
 ]
