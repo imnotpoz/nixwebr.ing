@@ -43,4 +43,5 @@
     { name = "andromeda"; site = "https://mtgmonkey.net"; config = "https://git.mtgmonkey.net/Andromeda/home-manager"; }
     { name = "thegrayarea"; site = "https://the.smallinter.net"; }
     { name = "boers"; site = "https://boers.email"; config = "https://github.com/martijnboers/nixos"; }
+    { name = "quantenzitrone"; site = "https://quantenzitrone.eu"; config = "https://codeberg.org/quantenzitrone/nixos-config"; }
 ]
