@@ -84,7 +84,7 @@ async fn main() -> io::Result<()> {
                     )
             )
     })
-    .bind((nix_webring_host, nix_webring_port))?
-    .run()
-    .await
+        .bind((nix_webring_host, nix_webring_port))?
+        .run()
+        .await
 }
