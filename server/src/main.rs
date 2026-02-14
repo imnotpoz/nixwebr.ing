@@ -22,6 +22,9 @@ async fn main() -> std::io::Result<()> {
     let nix_webring_dir = std::env::var("NIX_WEBRING_DIR")
         .expect("NIX_WEBRING_DIR not found");
 
+    let nix_webring_host = std::env::var("NIX_WEBRING_HOST")
+        .unwrap_or("127.0.0.1".to_string());
+
     let nix_webring_port = std::env::var("NIX_WEBRING_PORT")
         .expect("NIX_WEBRING_PORT not found")
         .parse::<u16>()
@@ -74,7 +77,7 @@ async fn main() -> std::io::Result<()> {
                     )
             )
     })
-    .bind(("127.0.0.1", nix_webring_port))?
+    .bind((nix_webring_host, nix_webring_port))?
     .run()
     .await
 }
