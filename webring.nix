@@ -1,5 +1,5 @@
 [
-    { name = "poz"; site = "https://poz.pet"; config = "https://flake.poz.pet"; }
+    { name = "poz"; site = "https://poz.pet"; config = "https://nix.poz.pet"; }
     { name = "partywumpus"; site = "https://partywump.us"; config = "https://nix.partywump.us"; }
     { name = "notashelf"; site = "https://notashelf.dev"; config = "https://github.com/NotAShelf/nyx"; }
     { name = "twig"; site = "https://imnottwig.github.io"; config = "https://git.disroot.org/twigthecat/nixos"; }
