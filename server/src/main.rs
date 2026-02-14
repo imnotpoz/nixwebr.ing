@@ -3,7 +3,7 @@ use std::{fs::{self}, sync::Arc, time::Duration};
 use chrono::{DateTime, Local};
 use ntex::{http::{header, Response}, web::{self, middleware}};
 use ntex_files as nfs;
-use ::rand::{rng, Rng};
+use ::rand::{RngExt, rng};
 use tokio::sync::RwLock;
 use zasa::{parser::Parser, value::{denormalize, normalize}, Normalize};
 
@@ -296,7 +296,7 @@ async fn main() -> std::io::Result<()> {
 
     web::server(async move || {
         web::App::new()
-            .wrap(middleware::Logger::default())
+            .middleware(middleware::Logger::default())
             .state(Arc::clone(&members))
             .service(
                 web::scope("/")
