@@ -5,7 +5,7 @@ mod shift;
 mod status;
 mod types;
 
-use std::{fs::{self}, sync::Arc};
+use std::{env, fs::{self}, io, sync::Arc};
 
 use chrono::Local;
 use ntex::{web::{self, middleware}};
@@ -19,23 +19,23 @@ const DEFAULT_NIX_WEBRING_PORT: u16 = 5932;
 const DEFAULT_NIX_WEBRING_GECKODRIVER_PORT: u16 = 4444;
 
 #[ntex::main]
-async fn main() -> std::io::Result<()> {
+async fn main() -> io::Result<()> {
     env_logger::init();
 
-    let nix_webring_dir = std::env::var("NIX_WEBRING_DIR")
+    let nix_webring_dir = env::var("NIX_WEBRING_DIR")
         .expect("NIX_WEBRING_DIR not found");
 
-    let nix_webring_host = std::env::var("NIX_WEBRING_HOST")
+    let nix_webring_host = env::var("NIX_WEBRING_HOST")
         .unwrap_or("127.0.0.1".to_string());
 
-    let nix_webring_port = std::env::var("NIX_WEBRING_PORT")
+    let nix_webring_port = env::var("NIX_WEBRING_PORT")
         .map(|p|
             p.parse::<u16>()
                 .expect("NIX_WEBRING_PORT has to be u16")
         )
         .unwrap_or(DEFAULT_NIX_WEBRING_PORT);
 
-    let nix_webring_geckodriver_port = std::env::var("NIX_WEBRING_GECKODRIVER_PORT")
+    let nix_webring_geckodriver_port = env::var("NIX_WEBRING_GECKODRIVER_PORT")
         .map(|p|
             p.parse::<u16>()
                 .expect("NIX_WEBRING_GECKODRIVER_PORT has to be u16")
