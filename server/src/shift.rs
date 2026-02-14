@@ -1,12 +1,12 @@
 use crate::types::{WebringMember, WebsiteStatus};
 
 pub fn shift_ring(
-    members: &Vec<WebringMember>,
+    members: &[WebringMember],
     name: &str,
     forward: bool,
 ) -> Option<String> {
     if let Some((i, _)) = members.iter().enumerate().find(|(_, member)| member.name == *name) {
-        let mut m = members.clone();
+        let mut m = members.to_owned().clone();
         if forward {
             m.rotate_left(i + 1);
         } else {
