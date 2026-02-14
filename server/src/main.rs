@@ -15,6 +15,9 @@ use zasa::{parser::Parser, value::normalize, Normalize};
 
 use crate::types::{WebringMember, WebsiteStatus};
 
+const DEFAULT_NIX_WEBRING_PORT: u16 = 5932;
+const DEFAULT_NIX_WEBRING_GECKODRIVER_PORT: u16 = 4444;
+
 #[ntex::main]
 async fn main() -> std::io::Result<()> {
     env_logger::init();
@@ -30,14 +33,14 @@ async fn main() -> std::io::Result<()> {
             p.parse::<u16>()
                 .expect("NIX_WEBRING_PORT has to be u16")
         )
-        .unwrap_or(5932);
+        .unwrap_or(DEFAULT_NIX_WEBRING_PORT);
 
     let nix_webring_geckodriver_port = std::env::var("NIX_WEBRING_GECKODRIVER_PORT")
         .map(|p|
             p.parse::<u16>()
                 .expect("NIX_WEBRING_GECKODRIVER_PORT has to be u16")
         )
-        .unwrap_or(4444);
+        .unwrap_or(DEFAULT_NIX_WEBRING_GECKODRIVER_PORT);
 
     let path = format!("{nix_webring_dir}/webring.json");
     let json = fs::read_to_string(&path)
