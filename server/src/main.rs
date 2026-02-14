@@ -26,14 +26,18 @@ async fn main() -> std::io::Result<()> {
         .unwrap_or("127.0.0.1".to_string());
 
     let nix_webring_port = std::env::var("NIX_WEBRING_PORT")
-        .expect("NIX_WEBRING_PORT not found")
-        .parse::<u16>()
-        .expect("NIX_WEBRING_PORT has to be u16");
+        .map(|p|
+            p.parse::<u16>()
+                .expect("NIX_WEBRING_PORT has to be u16")
+        )
+        .unwrap_or(5932);
 
     let nix_webring_geckodriver_port = std::env::var("NIX_WEBRING_GECKODRIVER_PORT")
-        .expect("NIX_WEBRING_GECKODRIVER_PORT not found")
-        .parse::<u16>()
-        .expect("NIX_WEBRING_GECKODRIVER_PORT has to be u16");
+        .map(|p|
+            p.parse::<u16>()
+                .expect("NIX_WEBRING_GECKODRIVER_PORT has to be u16")
+        )
+        .unwrap_or(4444);
 
     let path = format!("{nix_webring_dir}/webring.json");
     let json = fs::read_to_string(&path)
