@@ -3,7 +3,7 @@ use std::{fs::{self}, sync::Arc, time::Duration};
 use chrono::{DateTime, Local};
 use ntex::{http::{header, Response}, web::{self, middleware}};
 use ntex_files as nfs;
-use ::rand::{RngExt, rng};
+use rand::{RngExt, rng};
 use tokio::sync::RwLock;
 use zasa::{parser::Parser, value::{denormalize, normalize}, Normalize};
 
@@ -98,7 +98,7 @@ async fn prev(
 }
 
 #[web::get("/rand")]
-async fn rand(
+async fn random(
     members: web::types::State<Arc<RwLock<Vec<WebringMember>>>>,
 ) -> impl web::Responder {
     let members = members.read().await;
@@ -302,7 +302,7 @@ async fn main() -> std::io::Result<()> {
                 web::scope("/")
                     .service(next)
                     .service(prev)
-                    .service(rand)
+                    .service(random)
                     .service(status)
                     .service(
                         nfs::Files::new("/", nix_webring_dir.clone())
