@@ -45,4 +45,5 @@
     { name = "boers"; site = "https://boers.email"; config = "https://github.com/martijnboers/nixos"; }
     { name = "quantenzitrone"; site = "https://quantenzitrone.eu"; config = "https://codeberg.org/quantenzitrone/nixos-config"; }
     { name = "matilde"; site = "https://matilde.pet"; config = "https://github.com/puppymati/kennel"; } 
+    { name = "poacher"; site = "https://henry.is-a.dev"; config = "https://codeberg.com/poacher/nix-dotfiles"; }
 ]
