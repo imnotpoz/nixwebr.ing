@@ -8,7 +8,7 @@
     { name = "ajaxbits"; site = "https://ajaxbits.com"; config = "https://github.com/ajaxbits/config"; }
     { name = "jappie"; site = "https://jappie.dev"; config = "https://app.radicle.xyz/nodes/git.jappie.dev/rad:z4HEZGDPknT12W4fuXc6wM3HtYTf2"; }
     { name = "korolr"; site = "https://korolr.dev"; config = "https://github.com/korolr/nixos-config"; }
-    { name = "emo-mruczek"; site = "https://emo-mruczek.pl"; config = "https://github.com/emo-mruczek/niksos-confg"; }
+    { name = "emo-mruczek"; site = "https://emo-mruczek.pet"; config = "https://github.com/emo-mruczek/niksos-confg"; }
     { name = "mat"; site = "https://allpurposem.at"; config = "https://git.allpurposem.at/mat/Computer"; }
     { name = "bwkam"; site = "https://bwkam.github.io"; config = "https://github.com/bwkam/dots"; }
     { name = "MarkAssPandi"; site = "https://kamila.pet"; config = "https://codeberg.org/MicroPanda123/nixosos"; }
