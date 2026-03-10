@@ -47,4 +47,5 @@
     { name = "matilde"; site = "https://matilde.pet"; config = "https://github.com/puppymati/kennel"; } 
     { name = "poacher"; site = "https://henry.is-a.dev"; config = "https://codeberg.com/poacher/nix-dotfiles"; }
     { name = "luuumine"; site = "https://luuumine.com"; config = "https://github.com/luuumine/nixos"; }
+    { name = "karolbroda"; site = "https://karolbroda.com"; config = "https://github.com/karol-broda/nixos-config"; }
 ]
