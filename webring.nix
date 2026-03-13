@@ -49,4 +49,5 @@
     { name = "luuumine"; site = "https://luuumine.com"; config = "https://github.com/luuumine/nixos"; }
     { name = "karolbroda"; site = "https://karolbroda.com"; config = "https://github.com/karol-broda/nixos-config"; }
     { name = "tech-absurdist"; site = "https://tech-absurdist.neocities.org/"; }
+    { name = "sysfab"; site = "https://sysfab.github.io/"; config = "https://github.com/sysfab/aria"; }
 ]
