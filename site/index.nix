@@ -23,6 +23,7 @@ in {
         <title>nix webring</title>
         <link rel="icon" type="image/svg" href="/nix-webring.svg">
         <link rel="stylesheet" href="/index.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="nix webring">
         <meta property="og:image" content="https://nixwebr.ing/nix-webring.svg">
         <meta property="og:type" content="website">
