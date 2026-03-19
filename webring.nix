@@ -41,7 +41,7 @@
     { name = "soliprem"; site = "https://soliprem.eu"; config = "https://github.com/Soliprem/nix-config"; }
     { name = "henrikvtcodes"; site = "https://henrikvt.com"; config = "https://github.com/henrikvtcodes/nix-machines"; }
     { name = "andromeda"; site = "https://mtgmonkey.net"; config = "https://git.mtgmonkey.net/Andromeda/home-manager"; }
-    { name = "thegrayarea"; site = "https://the.smallinter.net"; }
+    { name = "thegrayarea"; site = "https://the.smallinter.net"; config = "https://codeberg.org/thegrayarea/nixsrv"; }
     { name = "boers"; site = "https://boers.email"; config = "https://github.com/martijnboers/nixos"; }
     { name = "quantenzitrone"; site = "https://quantenzitrone.eu"; config = "https://codeberg.org/quantenzitrone/nixos-config"; }
     { name = "matilde"; site = "https://matilde.pet"; config = "https://github.com/puppymati/kennel"; } 
