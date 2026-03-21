@@ -100,3 +100,16 @@ hr {
     align-self: center;
     margin: 1em auto 1em;
 }
+
+@media (max-width: 800px) {
+    body {
+        box-sizing: border-box;
+        font-size: 0.90rem;
+        padding: 0px 1rem;
+    }
+
+    img {
+        max-width: 60%;
+        height: auto;  
+    }
+}
