@@ -106,6 +106,12 @@ in {
 
           ${h2 "updates"}
           <p>
+            2026-04-04
+            <br>
+            removed <code>tech-absurdist</code> due to the webring links not being on the linked page
+            contact me after fixing your issue or make a PR to get back in
+          </p>
+          <p>
             2025-05-07
             <br>
             removed <code>spoody</code> due to the website being broken

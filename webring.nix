@@ -48,7 +48,6 @@
     { name = "poacher"; site = "https://henry.is-a.dev"; config = "https://codeberg.com/poacher/nix-dotfiles"; }
     { name = "luuumine"; site = "https://luuumine.com"; config = "https://github.com/luuumine/nixos"; }
     { name = "karolbroda"; site = "https://karolbroda.com"; config = "https://github.com/karol-broda/nixos-config"; }
-    { name = "tech-absurdist"; site = "https://tech-absurdist.neocities.org/"; }
     { name = "sysfab"; site = "https://sysfab.github.io/"; config = "https://github.com/sysfab/aria"; }
     { name = "SquirrelModeller"; site = "https://squirrel.talosvault.net"; config = "https://github.com/SquirrelModeller/squirrel-nixos"; }
     { name = "aliyss"; site = "https://aliyss.is-a.dev/nix-webring"; config = "https://github.com/aliyss/dotfiles"; }
