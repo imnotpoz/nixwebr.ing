@@ -52,4 +52,5 @@
     { name = "SquirrelModeller"; site = "https://squirrel.talosvault.net"; config = "https://github.com/SquirrelModeller/squirrel-nixos"; }
     { name = "aliyss"; site = "https://aliyss.is-a.dev/nix-webring"; config = "https://github.com/aliyss/dotfiles"; }
     { name = "voidwalter"; site = "https://voidwalter.github.io"; config = "https://github.com/voidwalter/nixos"; }
+    { name = "tech-absurdist"; site = "https://tech-absurdist.neocities.org/links"; }
 ]
