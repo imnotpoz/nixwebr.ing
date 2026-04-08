@@ -18,6 +18,7 @@ fn links_present(member_name: &str, website_source: &str) -> bool {
 }
 
 const FETCH_TRIES: u8 = 5;
+const FETCH_TIMEOUT: Duration = Duration::from_secs(15);
 
 pub async fn website_checker(
     members: Arc<RwLock<Vec<WebringMember>>>,
@@ -25,7 +26,10 @@ pub async fn website_checker(
 ) {
     let day = Duration::from_secs(24 * 60 * 60);
     loop {
-        let reqwest_client = reqwest::Client::new();
+        let reqwest_client = reqwest::ClientBuilder::new()
+            .timeout(FETCH_TIMEOUT)
+            .build()
+            .expect("failed creating reqwest client");
         let start = Local::now();
 
         let mut members = members.write().await;
@@ -94,7 +98,6 @@ pub async fn website_checker(
                         eprintln!("couldn't reach {}'s website! (status unreachable)", member.name);
                         eprintln!("reason: {e}");
                         site_status = WebsiteStatus::Unreachable;
-                        tokio::time::sleep(Duration::from_secs(5)).await;
                         continue;
                     },
                 }
