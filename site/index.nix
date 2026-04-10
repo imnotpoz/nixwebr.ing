@@ -39,6 +39,8 @@ in {
 
           ${h2 "webring members"}
           <p>
+            the nix icons next to users' names link to their nixos configs
+            <br><br>
             all websites are automatically checked every 24 hours
             <br><br>
             hover over the status character to see the last checked time (UTC+1)
