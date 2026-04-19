@@ -54,4 +54,5 @@
     { name = "voidwalter"; site = "https://voidwalter.github.io"; config = "https://github.com/voidwalter/nixos"; }
     { name = "tech-absurdist"; site = "https://tech-absurdist.neocities.org/links"; }
     { name = "lair"; site = "https://lair.moe"; config = "https://g.lair.moe/Sweetbread/nixos-config"; }
+    { name = "ivy"; site = "https://ivyro.se"; config = "https://git.lovecomputer.net/ivy/sys"; }
 ]
