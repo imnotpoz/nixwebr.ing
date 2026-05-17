@@ -46,7 +46,7 @@
     { name = "quantenzitrone"; site = "https://quantenzitrone.eu"; config = "https://codeberg.org/quantenzitrone/nixos-config"; }
     { name = "matilde"; site = "https://matilde.pet"; config = "https://github.com/puppymati/kennel"; } 
     { name = "poacher"; site = "https://henry.is-a.dev"; config = "https://codeberg.com/poacher/nix-dotfiles"; }
-    { name = "luuumine"; site = "https://luuumine.com"; config = "https://github.com/luuumine/nixos"; }
+    { name = "luuumine"; site = "https://luuumine.com"; config = "https://git.luuumine.com/luuumine/nixos"; }
     { name = "karolbroda"; site = "https://karolbroda.com"; config = "https://github.com/karol-broda/nixos-config"; }
     { name = "sysfab"; site = "https://sysfab.github.io/"; config = "https://github.com/sysfab/aria"; }
     { name = "SquirrelModeller"; site = "https://squirrel.talosvault.net"; config = "https://github.com/SquirrelModeller/squirrel-nixos"; }
