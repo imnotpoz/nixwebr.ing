@@ -56,4 +56,5 @@
     { name = "lair"; site = "https://lair.moe"; config = "https://g.lair.moe/Sweetbread/nixos-config"; }
     { name = "ivy"; site = "https://ivyro.se"; config = "https://git.lovecomputer.net/ivy/sys"; }
     { name = "Ladas552"; site = "https://blog.ladas552.me/"; config = "https://tangled.org/ladas552.me/Flake-ocean"; }
+    { name = "lem.my"; site = "https://lem.my"; config = "https://tangled.org/lem.my/dotfiles"; }
 ]
