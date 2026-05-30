@@ -60,5 +60,5 @@
     { name = "lem.my"; site = "https://lem.my"; config = "https://tangled.org/lem.my/dotfiles"; }
     { name = "foko"; site = "https://hetman.at/me"; config = "https://git.hetman.at/foko/nixos"; }
     { name = "ginkogruen"; site = "https://ginkogruen.net"; }
-    { name = "vimnix"; site = "https://vimnix.github.io"; config = "https://github.com/vimnix/nixos-configuration"; }
+    { name = "dimunyx"; site = "https://dimunyx.github.io"; config = "https://github.com/dimunyx/nixos-configuration"; }
 ]
